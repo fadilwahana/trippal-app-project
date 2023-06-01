@@ -17,3 +17,6 @@ def predict():
         model_input = utils.preprocessing(data)
         results = model.predict(model_input)
     return jsonify({"prediction": results})
+
+if __name__ == '__main__':
+    app.run(port=9000, debug=True)
