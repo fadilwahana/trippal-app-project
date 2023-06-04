@@ -1,2 +1,5 @@
-flask
-utils
+fastapi
+joblib
+pandas
+numpy
+sklearn
