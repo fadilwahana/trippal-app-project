@@ -1,5 +1,4 @@
 fastapi
-joblib
-pandas
+uvicorn
 numpy
-sklearn
+tensorflow
