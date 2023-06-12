@@ -6,3 +6,4 @@ numpy
 Pillow
 tensorflow
 scikit-learn
+pandas
