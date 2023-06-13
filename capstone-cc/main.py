@@ -1,85 +1,30 @@
-# README
-# Hello everyone, in here I (Kaenova | Bangkit Mentor ML-20) 
-# will give you some headstart on createing ML API. 
-# Please read every lines and comments carefully. 
-# 
-# I give you a headstart on text based input and image based input API. 
-# To run this server, don't forget to install all the libraries in the
-# requirements.txt simply by "pip install -r requirements.txt" 
-# and then use "python main.py" to run it
-# 
-# For ML:
-# Please prepare your model either in .h5 or saved model format.
-# Put your model in the same folder as this main.py file.
-# You will load your model down the line into this code. 
-# There are 2 option I give you, either your model image based input 
-# or text based input. You need to finish functions "def predict_text" or "def predict_image"
-# 
-# For CC:
-# You can check the endpoint that ML being used, eiter it's /predict_text or 
-# /predict_image. For /predict_text you need a JSON {"text": "your text"},
-# and for /predict_image you need to send an multipart-form with a "uploaded_file" 
-# field. you can see this api documentation when running this server and go into /docs
-# I also prepared the Dockerfile so you can easily modify and create a container iamge
-# The default port is 8080, but you can inject PORT environement variable.
-# 
-# If you want to have consultation with me
-# just chat me through Discord (kaenova#2859) and arrange the consultation time
-#
-# Share your capstone application with me! 🥳
-# Instagram @kaenovama
-# Twitter @kaenovama
-# LinkedIn /in/kaenova
-
-# Start your code here!
-
 import os
 import uvicorn
 import traceback
 import tensorflow as tf
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
 
+from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
-from pydantic import BaseModel
-from urllib.request import Request
-from fastapi import FastAPI, Response, UploadFile
-from utils import load_image_into_numpy_array
-from joblib import dump, load
+from fastapi import FastAPI, Response
+from joblib import load
+from models import User, BagOfWords
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-# Initialize Model
-# If you already put your model in the same folder as this main.py
-# You can load .h5 model or any model below this line
-
-# If you use h5 type uncomment line below
-# model = tf.keras.models.load_model('./TripPal.h5')
-# If you use saved model type uncomment line below
-# model = tf.saved_model.load("./my_model_folder")
-
 app = FastAPI()
 
-
 # This endpoint is for a test (or health check) to this server
-@app.get("/")
-def index():
+@app.get("/", tags=['ROOT'])
+def root():
     return "Hello world from ML endpoint!"
 
-
-# If your model need text input use this endpoint!
-class RequestText(BaseModel):
-    text: str
-
-
-@app.post("/predict_text")
-def predict_text(req: RequestText, response: Response):
+@app.post("/recommendations", tags=['ML predictions'])
+def recommendations(req: User, response: Response):
     try:
         # In here you will get text sent by the user
-        text = req.text
-        print("Uploaded text:", text)
-
-        # Step 1: (Optional) Do your text preprocessing #
+        name = req.name
+        print("Uploaded text:", name)
 
         data = pd.read_csv('dummy.csv')
         data.head()
@@ -115,15 +60,8 @@ def predict_text(req: RequestText, response: Response):
                 recommended_people.append(list(data.index)[i])
             return recommended_people
 
-        # Step 2: Prepare your data to your model
-
-        rec = recommendations(text, cosine_sim)
-
-        # Step 3: Predict the data
-        # result = model.predict(...)
-
-        # Step 4: Change the result your determined API output
-
+        # Predict the data
+        rec = recommendations(name, cosine_sim)
         return rec
     except Exception as e:
         traceback.print_exc()
@@ -131,14 +69,12 @@ def predict_text(req: RequestText, response: Response):
         return "Internal Server Error"
 
 
-@app.post("/predict_tf")
-def predict_tf(req: RequestText, response: Response):
+@app.post("/score", tags=['ML predictions'])
+def tf_score(req: BagOfWords, response: Response):
     try:
         # In here you will get text sent by the user
         text = req.text
         print("Uploaded text:", text)
-
-        # Step 1: (Optional) Do your text preprocessing
 
         def matching(text_input):
             tf_model = tf.keras.models.load_model('TripPal.h5', compile=False)
@@ -147,13 +83,6 @@ def predict_tf(req: RequestText, response: Response):
             print(count_matrix)
             save = tf_model.predict(count_matrix)
             return save.tolist()
-
-        # Step 2: Prepare your data to your model
-
-        # Step 3: Predict the data
-        # result = model.predict(...)
-
-        # Step 4: Change the result your determined API output
 
         return matching(text)
 
@@ -164,7 +93,7 @@ def predict_tf(req: RequestText, response: Response):
 
 
 # Starting the server
-# Your can check the API documentation easily using /docs after the server is running
+# Check the API documentation easily using /docs after the server is running
 port = os.environ.get("PORT", 8080)
 print(f"Listening to http://0.0.0.0:{port}")
 uvicorn.run(app, host='0.0.0.0', port=port)
