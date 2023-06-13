@@ -63,8 +63,8 @@ def recommendations(req: User, response: Response):
         # Predict the data
         rec = recommendations(name, cosine_sim)
         return {
-                'data': rec
-            }
+            'data': rec
+        }
     except Exception as e:
         traceback.print_exc()
         response.status_code = 500
@@ -86,7 +86,9 @@ def tf_score(req: BagOfWords, response: Response):
             save = tf_model.predict(count_matrix)
             return save.tolist()
 
-        return matching(text)
+        return {
+            'data': matching(text)
+        }
 
     except Exception as e:
         traceback.print_exc()
