@@ -62,7 +62,9 @@ def recommendations(req: User, response: Response):
 
         # Predict the data
         rec = recommendations(name, cosine_sim)
-        return rec
+        return {
+                'data': rec
+            }
     except Exception as e:
         traceback.print_exc()
         response.status_code = 500
