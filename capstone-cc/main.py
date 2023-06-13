@@ -93,7 +93,6 @@ def tf_score(req: BagOfWords, response: Response):
 
 
 # Starting the server
-# Check the API documentation easily using /docs after the server is running
 port = os.environ.get("PORT", 8080)
 print(f"Listening to http://0.0.0.0:{port}")
 uvicorn.run(app, host='0.0.0.0', port=port)
