@@ -61,9 +61,16 @@ def recommendations(req: User, response: Response):
             return recommended_people
 
         # Predict the data
+        rec_list =[]
         rec = recommendations(name, cosine_sim)
+        for user in rec:
+            rec_dict = {
+                'name': user
+            }
+            rec_list.append(rec_dict)
+
         return {
-            'data': rec
+            'data': rec_list
         }
     except Exception as e:
         traceback.print_exc()
