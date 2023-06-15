@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="tosca">#1BBEAB</color>
+    <color name="grey">#858585</color>
+    <color name="dark_blue">#0249A2</color>
+    <color name="light_blue">#6FD2FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="night_blue">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="grey_3">#f7f7f7</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+    <color name="grey_95">#1a1a1a</color>
+    <color name="grey_100_">#0d0d0d</color>
+
+
+
+
+</resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "757913703891",
+    "project_id": "trip-pal-capstone-project",
+    "storage_bucket": "trip-pal-capstone-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757913703891:android:6ff1d09da1f12fee3c0b26",
+        "android_client_info": {
+          "package_name": "com.example.trippal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757913703891-ftu9elkuicfdoqrufrnppj8h8741iira.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trippal",
+            "certificate_hash": "6c5f9b680689e2731c4cb3f5ba2487c957942455"
+          }
+        },
+        {
+          "client_id": "757913703891-urjnbu9upsrtash12guq12qa4rbg4cg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqqjSqOHgA09fjvp83l--W4Qe-OY4HVh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757913703891-aj06e4t9t3flfpabbmpnf07npefniv44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

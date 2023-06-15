@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Base.Theme.TripPal"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainUi.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainUi.DetailUserInformation"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name=".MainUi.ProfileActivity"
+            android:exported="false"
+            android:label="@string/title_profile" />
+        <activity
+            android:name=".MainUi.EditProfile"
+            android:exported="false"
+            android:label="Edit Profile" />
+        <activity
+            android:name=".MainUi.SearchActivity"
+            android:exported="false"
+            android:label="Destination List" />
+        <activity
+            android:name=".MainUi.NewMain"
+            android:exported="true"
+            android:label="@string/title_activity_new_main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AuthUi.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/LoginRegis" />
+        <activity
+            android:name=".AuthUi.LoginActivity"
+            android:exported="false"
+            android:theme="@style/LoginRegis" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.trippal"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
