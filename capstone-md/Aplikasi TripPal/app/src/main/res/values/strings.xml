@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">TripPal</string>
+    <string name="login_text">Login</string>
+    <string name="email_text">Email</string>
+    <string name="pass_text">Password</string>
+    <string name="register_text">Register</string>
+    <string name="username_text">Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_friends">Friends</string>
+    <string name="tittle_edtProfile">Edit Profile</string>
+    <string name="title_activity_new_main">New_Main</string>
+    <string name="wellcome_text">Welcome</string>
+    <string name="search_destination">Search Your Destination Here</string>
+    <string name="chat">Message</string>
+    <string name="recommendation">Recommendation For You</string>
+    <string name="darkMod_text">Dark Mode</string>
+    <string name="logout">Logout</string>
+    <string name="edit_photo_profile">Edit Photo Profile</string>
+    <string name="edit_profile"> edit profile</string>
+    <string name="take_photo"> Take Photo</string>
+    <string name="choose_photo">From Gallery</string>
+    <string name="upload_profile_picture">Save</string>
+    <string name="add_aditional_info">Add your Aditional info</string>
+    <string name="add_detail_button">Add more</string>
+
+    <string name="nav_header_subtitle">Nav Header Subtitle</string>
+    <string name="tab1">Kuliner</string>
+    <string name="tab2">Alam</string>
+    <string name="tab3">Religi</string>
+
+
+</resources>
